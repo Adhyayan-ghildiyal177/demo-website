@@ -291,13 +291,9 @@ elif st.session_state.page == "Contact":
     </div>
     """, unsafe_allow_html=True)
 
-    c1, c2 = st.columns(2)
+    c1= st.columns(1)
     with c1:
         st.link_button("💬 Chat on WhatsApp", "https://wa.me/918076664925", use_container_width=True)
-    with c2:
-        st.link_button("📧 Email Us", "mailto:agentx.webb@gmail.com", use_container_width=True)
-
-    st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
 
