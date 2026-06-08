@@ -1,3 +1,5 @@
+import smtplib
+from email.message import EmailMessage
 import streamlit as st
 
 st.set_page_config(
@@ -297,14 +299,59 @@ elif st.session_state.page == "Contact":
 
     st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
 
+    st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
+
+with st.form("enquiry_form"):
+
     name = st.text_input("Your Name")
     phone = st.text_input("Your Phone Number")
     business = st.text_input("Business Name")
     message = st.text_area("Website Requirement")
 
-    if st.button("Submit"):
-        st.success("Thank you! We will contact you soon.")
+    submitted = st.form_submit_button("Submit Enquiry")
 
+    if submitted:
+
+        if not name or not phone or not message:
+            st.warning("Please fill all required fields.")
+
+        else:
+
+            try:
+
+                msg = EmailMessage()
+
+                msg["Subject"] = "New Website Enquiry - Delta-X Web Solutions"
+                msg["From"] = st.secrets["EMAIL_ADDRESS"]
+                msg["To"] = "agentx.webb@gmail.com"
+
+                msg.set_content(f"""
+NEW WEBSITE ENQUIRY
+
+Name: {name}
+
+Phone: {phone}
+
+Business: {business}
+
+Requirement:
+
+{message}
+                """)
+
+                with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+                    smtp.login(
+                        st.secrets["EMAIL_ADDRESS"],
+                        st.secrets["EMAIL_APP_PASSWORD"]
+                    )
+
+                    smtp.send_message(msg)
+
+                st.success("✅ Enquiry sent successfully. We will contact you soon.")
+
+            except Exception as e:
+                st.error("❌ Email sending failed.")
+                st.error(str(e))
 st.markdown("""
 <center style="color:#94a3b8;margin-top:35px;">
 © 2026 Delta-X Web Solutions • 3D Websites for Modern Businesses
