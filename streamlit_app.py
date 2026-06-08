@@ -52,41 +52,9 @@ st.markdown("""
     font-weight: 800;
 }
 
-.btn {
-    background: #22c55e;
-    color: white !important;
-    padding: 15px 28px;
-    border-radius: 35px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 20px;
-    box-shadow: 0px 8px 0px #166534;
-}
-
-.email-btn {
-    background: #2563eb;
-    box-shadow: 0px 8px 0px #1e3a8a;
-}
-
-.market {
-    background: linear-gradient(145deg, #7c2d12, #020617);
-}
-
-.floating-whatsapp {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #22c55e;
-    color: white !important;
-    padding: 15px 20px;
-    border-radius: 50px;
+.small {
+    color: #cbd5e1;
     font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    z-index: 9999;
-    box-shadow: 0px 8px 20px #000000;
 }
 
 @media only screen and (max-width: 768px) {
@@ -101,12 +69,6 @@ st.markdown("""
     }
 }
 </style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<a class="floating-whatsapp" href="https://wa.me/918076664925" target="_blank">
-💬 WhatsApp
-</a>
 """, unsafe_allow_html=True)
 
 # Navigation
@@ -133,7 +95,7 @@ with n5:
         st.session_state.page = "Contact"
 
 
-# HOME
+# HOME PAGE
 if st.session_state.page == "Home":
 
     st.markdown("""
@@ -141,11 +103,16 @@ if st.session_state.page == "Home":
         <div class="logo">DELTA-X</div>
         <h2>Delta-X Web Solutions</h2>
         <h1>Get More Customers With A Professional Website</h1>
-        <p>Fast • Mobile Friendly • WhatsApp Ready • Affordable</p>
+        <p class="small">Fast • Mobile Friendly • WhatsApp Ready • Affordable</p>
         <h2 style="color:#facc15;">Starting From ₹1000</h2>
-        <a class="btn" href="https://wa.me/918076664925" target="_blank">💬 Order on WhatsApp</a>
     </div>
     """, unsafe_allow_html=True)
+
+    cta1, cta2 = st.columns(2)
+    with cta1:
+        st.link_button("💬 Chat on WhatsApp", "https://wa.me/918076664925", use_container_width=True)
+    with cta2:
+        st.link_button("📧 Email Us", "mailto:agentx.webb@gmail.com", use_container_width=True)
 
     st.markdown('<div class="title">Why Businesses Trust Us</div>', unsafe_allow_html=True)
 
@@ -214,7 +181,7 @@ if st.session_state.page == "Home":
         st.markdown('<div class="card"><h2>💬 Lead Ready</h2><p>WhatsApp button for direct customer contact.</p></div>', unsafe_allow_html=True)
 
 
-# PRICING
+# PRICING PAGE
 elif st.session_state.page == "Pricing":
 
     st.markdown('<div class="logo">DELTA-X</div>', unsafe_allow_html=True)
@@ -259,7 +226,7 @@ elif st.session_state.page == "Pricing":
         """, unsafe_allow_html=True)
 
 
-# UPDATES
+# UPDATES PAGE
 elif st.session_state.page == "Updates":
 
     st.markdown('<div class="logo">DELTA-X</div>', unsafe_allow_html=True)
@@ -286,7 +253,7 @@ elif st.session_state.page == "Updates":
     """, unsafe_allow_html=True)
 
 
-# FAQ
+# FAQ PAGE
 elif st.session_state.page == "FAQ":
 
     st.markdown('<div class="logo">DELTA-X</div>', unsafe_allow_html=True)
@@ -308,7 +275,7 @@ elif st.session_state.page == "FAQ":
         st.write("₹1000 is for a starter one-page website. Extra pages or advanced features may cost more.")
 
 
-# CONTACT
+# CONTACT PAGE
 elif st.session_state.page == "Contact":
 
     st.markdown('<div class="logo">DELTA-X</div>', unsafe_allow_html=True)
@@ -319,12 +286,14 @@ elif st.session_state.page == "Contact":
         <h2>📞 8076664925</h2>
         <h3>📧 agentx.webb@gmail.com</h3>
         <p>Call, WhatsApp or Email us to start your website.</p>
-
-        <a class="btn" href="https://wa.me/918076664925" target="_blank">💬 Chat on WhatsApp</a>
-        <br>
-        <a class="btn email-btn" href="mailto:agentx.webb@gmail.com">📧 Email Us</a>
     </div>
     """, unsafe_allow_html=True)
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.link_button("💬 Chat on WhatsApp", "https://wa.me/918076664925", use_container_width=True)
+    with c2:
+        st.link_button("📧 Email Us", "mailto:agentx.webb@gmail.com", use_container_width=True)
 
     st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
 
