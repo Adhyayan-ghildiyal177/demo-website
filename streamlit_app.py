@@ -1,130 +1,232 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Website for Sale",
+    page_title="Delta-X",
     page_icon="🚀",
     layout="wide"
 )
 
+# Page memory
+if "page" not in st.session_state:
+    st.session_state.page = "Home"
+
+# CSS
 st.markdown("""
 <style>
 .stApp {
-    background: linear-gradient(135deg, #020617, #0f172a, #111827);
+    background: linear-gradient(135deg, #020617, #0f172a, #000000);
     color: white;
 }
-.hero {
-    text-align: center;
-    padding: 70px 20px;
+
+.block-container {
+    padding-top: 25px;
 }
-.hero h1 {
-    font-size: 62px;
+
+.logo {
+    font-size: 90px;
+    font-weight: 900;
+    text-align: center;
     color: #38bdf8;
-    margin-bottom: 10px;
+    text-shadow: 5px 5px 0px #075985, 10px 10px 25px #000000;
 }
-.hero p {
-    font-size: 22px;
-    color: #cbd5e1;
-}
-.card {
-    background: rgba(255,255,255,0.08);
-    padding: 30px;
-    border-radius: 22px;
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    margin-bottom: 25px;
-}
-.price {
-    font-size: 45px;
-    color: #22c55e;
-    font-weight: bold;
-}
-.btn {
-    display: inline-block;
-    background: linear-gradient(90deg, #06b6d4, #3b82f6);
-    color: white !important;
-    padding: 15px 35px;
-    border-radius: 40px;
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: bold;
-}
-.feature {
-    font-size: 20px;
-    margin: 12px 0;
-}
-.footer {
+
+.hero, .card, .price, .contact {
+    background: linear-gradient(145deg, #111827, #020617);
+    padding: 35px;
+    border-radius: 30px;
     text-align: center;
-    color: #94a3b8;
-    padding: 40px;
+    margin-top: 25px;
+    box-shadow: 15px 15px 35px #000000,
+                -8px -8px 22px rgba(56,189,248,0.22);
+    border: 1px solid rgba(56,189,248,0.25);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    transition: 0.3s;
+}
+
+.title {
+    text-align: center;
+    font-size: 38px;
+    color: #38bdf8;
+    margin-top: 45px;
+    font-weight: 800;
+}
+
+.btn {
+    background: #22c55e;
+    color: white !important;
+    padding: 15px 28px;
+    border-radius: 35px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0px 8px 0px #166534;
+}
+
+.market {
+    background: linear-gradient(145deg, #7c2d12, #020617);
+    padding: 30px;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 35px;
+    box-shadow: 15px 15px 35px #000000;
+}
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        font-size: 55px;
+    }
+    .title {
+        font-size: 28px;
+    }
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="hero">
-    <h1>🚀 AI Website for Sale</h1>
-    <p>A ready-to-use modern AI-powered web application built with Streamlit.</p>
-    <br>
-    <a class="btn" href="#contact">Contact for Buying</a>
-</div>
-""", unsafe_allow_html=True)
+# Navigation
+n1, n2, n3 = st.columns(3)
 
-col1, col2 = st.columns(2)
+with n1:
+    if st.button("🏠 Home", use_container_width=True):
+        st.session_state.page = "Home"
 
-with col1:
+with n2:
+    if st.button("📢 Updates", use_container_width=True):
+        st.session_state.page = "Updates"
+
+with n3:
+    if st.button("📞 Contact", use_container_width=True):
+        st.session_state.page = "Contact"
+
+
+# HOME PAGE
+if st.session_state.page == "Home":
+
     st.markdown("""
-    <div class="card">
-        <h2>🌐 About This Website</h2>
-        <p class="feature">✅ AI-powered browser agent concept</p>
-        <p class="feature">✅ Clean and modern UI</p>
-        <p class="feature">✅ Mobile and desktop responsive</p>
-        <p class="feature">✅ Ready for customization</p>
-        <p class="feature">✅ Good for startups, agencies, and AI demos</p>
+    <div class="hero">
+        <div class="logo">DELTA-X</div>
+        <h2>3D Modern Websites for Small Businesses</h2>
+        <p>Mobile Friendly • Fast Delivery • WhatsApp Ready</p>
+        <a class="btn" href="https://wa.me/918076664925" target="_blank">💬 Order on WhatsApp</a>
     </div>
     """, unsafe_allow_html=True)
 
-with col2:
+    st.markdown('<div class="title">What We Make</div>', unsafe_allow_html=True)
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        st.markdown("""
+        <div class="card">
+            <h2>🏢 Business Website</h2>
+            <p>For shops, gyms, cafes, clinics, and local services.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c2:
+        st.markdown("""
+        <div class="card">
+            <h2>🎯 Landing Page</h2>
+            <p>One-page website to get calls and WhatsApp inquiries.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c3:
+        st.markdown("""
+        <div class="card">
+            <h2>👨‍💻 Portfolio Website</h2>
+            <p>For students, freelancers, creators, and professionals.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.markdown("""
-    <div class="card">
-        <h2>💰 Asking Price</h2>
-        <p class="price">₹49,999</p>
-        <p>Price negotiable for serious buyers.</p>
-        <p>Source code, deployment help, and basic setup support included.</p>
+    <div class="price">
+        <h2>🔥 First Website Offer</h2>
+        <h1 style="font-size:60px;color:#facc15;">₹1000</h1>
+        <h3>Afterwards ₹1500</h3>
+        <p>Includes design, mobile view, WhatsApp button, and contact section.</p>
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="card">
-    <h2>✨ Key Features</h2>
-    <p class="feature">🤖 AI-based automation idea</p>
-    <p class="feature">⚡ Fast Streamlit deployment</p>
-    <p class="feature">🎨 Premium dark 3D-style design</p>
-    <p class="feature">📱 Works on mobile, tablet, and PC</p>
-    <p class="feature">🛠️ Easy to modify for any business</p>
-</div>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="market">
+        <h2>Market Price: ₹5000+</h2>
+        <h1 style="color:#facc15;">Our Price Starts ₹1000</h1>
+        <p>Get a professional 3D-style website at a beginner-friendly price.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="card">
-    <h2>👤 Who Should Buy?</h2>
-    <p class="feature">✔️ Digital marketing agencies</p>
-    <p class="feature">✔️ AI startup founders</p>
-    <p class="feature">✔️ Website developers</p>
-    <p class="feature">✔️ Business owners wanting AI automation</p>
-</div>
-""", unsafe_allow_html=True)
+    st.markdown('<div class="title">Why Choose Us</div>', unsafe_allow_html=True)
 
-st.markdown("""
-<div class="card" id="contact">
-    <h2>📞 Contact to Buy</h2>
-    <p class="feature">Interested buyers can contact directly.</p>
-    <p class="feature"><b>Email:</b>Adhyayanghildiyal177@gmail.com</p>
-    <p class="feature"><b>WhatsApp:</b> +91-8076664925</p>
-</div>
-""", unsafe_allow_html=True)
+    w1, w2, w3 = st.columns(3)
 
+    with w1:
+        st.markdown('<div class="card"><h2>⚡ Fast</h2><p>Website ready in 24-48 hours.</p></div>', unsafe_allow_html=True)
+
+    with w2:
+        st.markdown('<div class="card"><h2>📱 Responsive</h2><p>Looks good on phone and computer.</p></div>', unsafe_allow_html=True)
+
+    with w3:
+        st.markdown('<div class="card"><h2>💬 Lead Ready</h2><p>WhatsApp button for customer contact.</p></div>', unsafe_allow_html=True)
+
+
+# UPDATES PAGE
+elif st.session_state.page == "Updates":
+
+    st.markdown('<div class="logo">DELTA-X</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="hero">
+        <h1>📢 Latest Updates</h1>
+        <p>Stay updated with our latest website offers and services.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <h2>🔥 New Offer</h2>
+        <p>First website only ₹1000. Market price normally ₹5000+.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <h2>🚀 3D Website Design</h2>
+        <p>Now we create attractive 3D-style websites for small businesses.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# CONTACT PAGE
+elif st.session_state.page == "Contact":
+
+    st.markdown('<div class="logo">DELTA-X</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="contact">
+        <h1>📞 Contact Us</h1>
+        <h2>8076664925</h2>
+        <p>Call or WhatsApp now to start your website.</p>
+        <a class="btn" href="https://wa.me/918076664925" target="_blank">💬 Chat on WhatsApp</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
+
+    name = st.text_input("Your Name")
+    phone = st.text_input("Your Phone Number")
+    message = st.text_area("Your Website Requirement")
+
+    if st.button("Submit"):
+        st.success("Thank you! We will contact you soon.")
+
+# Footer
 st.markdown("""
-<div class="footer">
-    © 2026 AI Website Sale Page | Built with Streamlit
-</div>
+<center style="color:#94a3b8;margin-top:35px;">
+© 2026 DELTA-X • 3D Websites for Modern Businesses
+</center>
 """, unsafe_allow_html=True)
