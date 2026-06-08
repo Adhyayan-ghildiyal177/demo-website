@@ -114,7 +114,11 @@ if st.session_state.page == "Home":
     with cta1:
         st.link_button("💬 Chat on WhatsApp", "https://wa.me/918076664925", use_container_width=True)
     with cta2:
-        st.link_button("📧 Email Us", "mailto:agentx.webb@gmail.com", use_container_width=True)
+        st.link_button(
+    "📧 Email Us on Gmail",
+    "https://mail.google.com/mail/?view=cm&fs=1&to=agentx.webb@gmail.com&su=Website%20Enquiry%20for%20Delta-X",
+    use_container_width=True
+)
 
     st.markdown('<div class="title">Why Businesses Trust Us</div>', unsafe_allow_html=True)
 
@@ -295,7 +299,11 @@ elif st.session_state.page == "Contact":
     with c1:
         st.link_button("💬 Chat on WhatsApp", "https://wa.me/918076664925", use_container_width=True)
     with c2:
-        st.link_button("📧 Email Us", "mailto:agentx.webb@gmail.com", use_container_width=True)
+        st.link_button(
+    "📧 Email Us on Gmail",
+    "https://mail.google.com/mail/?view=cm&fs=1&to=agentx.webb@gmail.com&su=Website%20Enquiry%20for%20Delta-X",
+    use_container_width=True
+)
 
     st.markdown('<div class="title">Send Enquiry</div>', unsafe_allow_html=True)
 
